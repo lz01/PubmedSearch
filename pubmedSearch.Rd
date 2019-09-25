@@ -8,7 +8,6 @@ entrez_db_searchable("pubmed")
 
 
 ## Define my Pubmed queries
-
 q0 = "replication"
 q1 = "replication AND transcription"
 q2 = "(replication[MeSH]) AND (transcription[MeSH])"
@@ -24,7 +23,6 @@ s4 = entrez_search(db="pubmed",term=q4,retmax=10000)
 
 
 ## Number of results returned for each query
-
 s0$count
 s1$count
 s2$count
@@ -39,7 +37,6 @@ table(journals1)
 ## Extract publication types returned in search s1
 ## Pubtype can be
 ## "Clinical Trial","Randomized Controlled Trial","Multicenter Study","Review","Meta-Analysis","Evaluation Studies","Comment","Editorial","Letter","News"
-
 pubtypes1 = extract_from_esummary(summary1,"pubtype")
 table(pubtypes1)
 
