@@ -24,6 +24,7 @@ s4 = entrez_search(db="pubmed",term=q4,retmax=10000)
 
 
 ## Number of results returned for each query
+
 s0$count
 s1$count
 s2$count
@@ -36,8 +37,10 @@ journals1 = extract_from_esummary(summary1,"fulljournalname")
 table(journals1)
 
 ## Extract publication types returned in search s1
-## Pubtype can be "Clinical Trial","Randomized Controlled Trial","Multicenter Study","Review","Meta-Analysis","Evaluation Studies","Comment","Editorial","Letter","News"
-pubtypes1 = extract_from_esummary(summ1,"pubtype")
+## Pubtype can be
+## "Clinical Trial","Randomized Controlled Trial","Multicenter Study","Review","Meta-Analysis","Evaluation Studies","Comment","Editorial","Letter","News"
+
+pubtypes1 = extract_from_esummary(summary1,"pubtype")
 table(pubtypes1)
 
 
@@ -46,7 +49,7 @@ table(pubtypes1)
 ## Function querybyyear() takes as input a query and a year and returns
 ##   the number of articles returned by that query and published on that given year
 
-querybyyear=function(query, year)
+querybyyear = function(query, year)
 {
   queryyear = paste(query, "AND (", year, "[PDAT])")
   n = entrez_search(db="pubmed", term=queryyear, retmax=0)$count
@@ -87,7 +90,7 @@ for(i in 1:length(decades))
     proportiondecade = c(proportiondecade,sum(proportion[years[]>=decades[i]-5 & years[]<decades[i]+5]))
 }
 proportiondecade = proportiondecade[-1]
-proportiondecade[6]=proportiondecade[6]*10/8
+proportiondecade[6] = proportiondecade[6]*10/8
 
 
 
